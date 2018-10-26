@@ -19,6 +19,5 @@ if($ENV{'QUERY_STRING'} eq "") {
 }
 else {
    @arGet=split("=",$ENV{'QUERY_STRING'});
-   $arGet[1]=~ s/%2F/\//g;
    print "Entonces el lenguaje que mas te gusta es $arGet[1] \n\n"
 }
