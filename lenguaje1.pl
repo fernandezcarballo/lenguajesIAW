@@ -15,29 +15,30 @@ if($ENV{'QUERY_STRING'} eq "") {
      print ">$_</option>";
    }
    print "</select>
-         <input type=\"submit\" value=\"Adelante\" /> \n\n";
+         <input type=\"submit\" value=\"Enviar\" /> \n\n";
 }
-
 if($ENV{'QUERY_STRING'} ne "") {
 	 @arGet=split("=",$ENV{'QUERY_STRING'});
-	 print "El lenguaje escogido es: $arGet[1]";
-  print "<h2> Porque te gusta mas ese lenguaje </h2>
+   if($arGet[0] eq 'lenguaje') {
+	     print "El lenguaje escogido es: $arGet[1]";
+       print "<h2> Porque te gusta mas el lenguaje de programacion: $arGet[1]</h2>
           <form name=\"search\" method=\"get\" >";
-   open F, "/home/alvarofe/Escritorio/respuestas.txt";
-   while(<F>) {
-     chomp;
-     @campos=split(",");
-     $ari{$campos[0]}=$campos[0];
+       open F, "/home/alvarofe/Escritorio/respuestas.txt";
+       while(<F>) {
+         chomp;
+         @campos=split(",");
+         $ar{$campos[0]}=$campos[0];
    }
    print "<select name = \"respuesta\">";
-   for (keys %ari){
+   for (keys %ar){
      print "<option value=$_";
      print ">$_</option>";
    }  
  print "</select>
-         <input type=\"submit\" value=\"Adelante\" /> \n\n";
-   @ariGet=split("=",$ENV{'QUERY_STRING'});
-   print "te gusta porque: $ariGet[1]";
-
+         <input type=\"submit\" value=\"Enviar\" /> \n\n";
 }
-
+  if($arGet[0] eq 'respuesta') {
+  @ariGet=split("=",$ENV{'QUERY_STRING'});
+  print "te gusta porque: $ariGet[1]";
+}
+}
