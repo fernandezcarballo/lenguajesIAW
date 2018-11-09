@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 print "Content-Type: text/html\n\n";
+print "Content-Type: text/html; charset=utf-8\n\n";
 if($ENV{'QUERY_STRING'} eq "") {
    print "<h2> Que lenguaje de programacion escoges </h2>
           <form name=\"search\" method=\"get\" >";
